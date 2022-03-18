@@ -2,11 +2,15 @@ import json
 import secrets as s
 from collections import defaultdict
 import pandas
+from pathlib import Path
 import requests
 import sms
 
+base_path = Path(__file__).parent
+db_path = (base_path / "./db.json").resolve()
+
 # read in database file to runtime memory
-with open('db.json', 'r') as db_file:
+with open(db_path, 'r') as db_file:
     prev_scan_data = json.load(db_file)
 
 db = defaultdict(int, prev_scan_data) # set to 0 initially by calling int

@@ -51,7 +51,7 @@ for company in df.itertuples(index=False):
 
 if changes_found:
     # replace database file with runtime memory
-    with open('db.json', 'w') as db_file:
+    with open(db_path, 'w') as db_file:
         json.dump(db, db_file, indent=4)
 else:
     sms.send(f'I scanned {len(db.keys())} career pages and there are no job updates to report! Have a nice day :)')

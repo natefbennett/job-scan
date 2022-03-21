@@ -22,4 +22,7 @@ def send(message):
     server.login(auth[0], auth[1])
 
     # Send text message through SMS gateway of destination number
-    server.sendmail( auth[0], to_number, message)
+    server.sendmail( auth[0], to_number, '\n'+message) # added newline due to blank messages, 
+                                                       # smtplib does not automatically put
+                                                       # a newline between the message header and
+                                                       # message body 
